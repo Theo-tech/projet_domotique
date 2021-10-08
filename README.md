@@ -60,7 +60,7 @@ sequenceDiagram
 ## ESP32
 
 ### ESP32 : Introduction
-Afin de traiter cette partie, il est necessaire d'utiliser l'extension PlateformeIO pour VisualCode. L'objectif va etre de publier sur le topic dédié les informations de température et d'humidité issues du capteur Bluetooth. 
+Afin de traiter cette partie, il est necessaire d'utiliser l'extension PlateformeIO pour VisualCode. L'objectif va être de publier sur le topic dédié les informations de température et d'humidité issues du capteur Bluetooth. 
 
 L'application est codée en C++
 
@@ -73,9 +73,9 @@ Le capteur envoie 3 trames d'annonce différentes :
 - Avec l'humidité et la température (c'est celle ci qui est utilisé)
 
 Dans ces trames : 
-le 18e octet permet de différencier quelle type de trame à été reçu.
+le 18e octet permet de différencier quel type de trame à été reçu.
 
-Dans le cas ou cet octet contient la valeur héxadécimal : 0d il s'agit de la trame contenant la température et l'humidité.
+Dans le cas où cet octet contient la valeur héxadécimale : 0d il s'agit de la trame contenant la température et l'humidité.
 
 On peut récupérer ces données avec les formules suivantes 
 
@@ -109,7 +109,7 @@ EspMQTTClient mqtt(
 
 ### ESP32 : Transmission MQTT
 
-L'envoi de données est fait grâce à la librairie
+L'envoi de données est fait grâce à la librairie suivante : 
 
 ```cpp
 
@@ -201,7 +201,7 @@ static void mqtt_connection_cb(mqtt_client_t *client, void *arg, mqtt_connection
 
 
 
-Traitement des data :
+Traitement des datas :
 
 La librairie ne nous permet pas d'avoir un callback spécifique pour chaque topic, c'est à nous de gérer au niveau applicatif ce qu'on doit faire :
 
@@ -218,7 +218,7 @@ static int inpub_id;
 
 
 // Fonction appelée lors d'un nouveau message sur un topic écouté
-// Elle contient le topic concernée
+// Elle contient le topic concerné
 // Elle ne contient pas les données
 static void mqtt_incoming_publish_cb(void *arg, const char *topic, u32_t tot_len)
 {
@@ -264,7 +264,7 @@ static void mqtt_incoming_data_cb(void *arg, const u8_t *data, u16_t len, u8_t f
 
 Gestion des erreurs : 
 
-Sur chacunes des fonctions suivantes, le type de retour est un err_t (un int) indiquant si l'execution de la fonction c'est bien déroulée ou non
+Sur chacune des fonctions suivantes, le type de retour est un err_t (un int) indiquant si l'execution de la fonction c'est bien déroulée ou non
 > retour == ERR_OK (0) => pas de problème
 > retour != ERR_OK => problème
 
